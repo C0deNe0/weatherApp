@@ -12,6 +12,7 @@ const WeatherDashboard = () => {
     if(coordinates){
       //reload weather data
     }else{
+      //sommething
       console.log("get lost")
     }
   }
