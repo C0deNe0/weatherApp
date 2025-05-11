@@ -1,3 +1,5 @@
+import CurrentWeather from "@/components/current-weather";
+import WeatherSkeleton from "@/components/loading-skeleton";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button"
 import { useGeolocation } from "@/hooks/use-geolocation"
@@ -80,13 +82,26 @@ if (!weatherQuery.data || !forecastQuery.data){
   return (
     <div className="space-y-4">
 
-      //fav cites
+      {/* fav cites */}
       <div className="flex items-center justify-between">
           <h1 className="text-xl font-bold tracking-tight">My Location</h1>
           <Button variant={"outline"} size={"icon"} onClick={handleRefresh} disabled={weatherQuery.isFetching || forecastQuery.isFetching}> <RefreshCw className={`h-4 w-4 ${weatherQuery.isFetching?"animate-spin":""}`} />  </Button>
         </div>  
 
-      //current and hourly hourly
+      <div className="grid gap-6">
+        <div>
+          {/* current weather */}
+          <CurrentWeather 
+          data={weatherQuery.data}
+          locationName={locationName}
+           />
+          {/* hourly temp */}
+        </div>
+        <div>
+          {/* details */}
+          {/* forecast */}
+        </div>
+        </div>
     </div>
   )
 }
